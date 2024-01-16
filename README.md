@@ -26,3 +26,7 @@ poi il classico:
 
 ////////////////////
 
+lavori da fare
+parsing config file
+parsing richiesta http
+utils
