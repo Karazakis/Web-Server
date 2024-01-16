@@ -108,16 +108,22 @@ RICHIESTE HTML
 Esempio di richiesta GET:
 
 GET /resource HTTP/1.1
+
 Host: www.example.com
+
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
 
 
 Esempio di richiesta POST con JSON:
 
 POST /resource HTTP/1.1
+
 Host: www.example.com
+
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+
 Content-Type: application/json
+
 Content-Length: 18
 
 {"key":"value"}
@@ -126,21 +132,30 @@ Content-Length: 18
 Esempio di richiesta DELETE:
 
 DELETE /resource/123 HTTP/1.1
+
 Host: www.example.com
+
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
 
 
 Esempio di richiesta di upload di un file:
 
 POST /upload HTTP/1.1
+
 Host: www.example.com
+
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
+
 Content-Length: ...
 
 ------WebKitFormBoundaryABC123
+
 Content-Disposition: form-data; name="file"; filename="example.txt"
+
 Content-Type: text/plain
+
 
 Contenuto del file qui...
 
@@ -150,13 +165,19 @@ Contenuto del file qui...
 oppure
 
 POST /upload HTTP/1.1
+
 Host: www.example.com
+
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
+
 Content-Length: ...
 
 ------WebKitFormBoundaryABC123
+
 Content-Disposition: form-data; name="file"; filename="yellow_pixel.png"
+
 Content-Type: image/png
 
 ‰PNG
