@@ -105,13 +105,14 @@ CONFIG FILE DA PARSARE
 
 RICHIESTE HTML
 
-Esempio di richiesta GET:
+====>>Esempio di richiesta GET:
+
 GET /resource HTTP/1.1<br>
 Host: www.example.com<br>
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
 
 
-Esempio di richiesta POST con JSON:
+====>>Esempio di richiesta POST con JSON:
 
 POST /resource HTTP/1.1<br>
 Host: www.example.com<br>
@@ -122,14 +123,14 @@ Content-Length: 18<br>
 {"key":"value"}
 
 
-Esempio di richiesta DELETE:
+====>>Esempio di richiesta DELETE:
 
 DELETE /resource/123 HTTP/1.1<br>
 Host: www.example.com<br>
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
 
 
-Esempio di richiesta di upload di un file:
+====>>Esempio di richiesta di upload di un file:
 
 POST /upload HTTP/1.1<br>
 Host: www.example.com<br>
