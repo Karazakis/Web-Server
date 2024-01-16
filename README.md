@@ -106,42 +106,42 @@ CONFIG FILE DA PARSARE
 RICHIESTE HTML
 
 Esempio di richiesta GET:
-GET /resource HTTP/1.1
-Host: www.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+GET /resource HTTP/1.1<br>
+Host: www.example.com<br>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
 
 
 Esempio di richiesta POST con JSON:
 
-POST /resource HTTP/1.1
-Host: www.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
-Content-Type: application/json
-Content-Length: 18
+POST /resource HTTP/1.1<br>
+Host: www.example.com<br>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
+Content-Type: application/json<br>
+Content-Length: 18<br>
 
 {"key":"value"}
 
 
 Esempio di richiesta DELETE:
 
-DELETE /resource/123 HTTP/1.1
-Host: www.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+DELETE /resource/123 HTTP/1.1<br>
+Host: www.example.com<br>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
 
 
 Esempio di richiesta di upload di un file:
 
-POST /upload HTTP/1.1
-Host: www.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
+POST /upload HTTP/1.1<br>
+Host: www.example.com<br>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123<br>
 
 Content-Length: ...
 
 ------WebKitFormBoundaryABC123
 
-Content-Disposition: form-data; name="file"; filename="example.txt"
-Content-Type: text/plain
+Content-Disposition: form-data; name="file"; filename="example.txt"<br>
+Content-Type: text/plain<br>
 
 
 Contenuto del file qui...
@@ -151,15 +151,15 @@ Contenuto del file qui...
 
 oppure
 
-POST /upload HTTP/1.1
-Host: www.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
-Content-Length: ...
+POST /upload HTTP/1.1<br>
+Host: www.example.com<br>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<br>
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123<br>
+Content-Length: ...<br>
 
-------WebKitFormBoundaryABC123
-Content-Disposition: form-data; name="file"; filename="yellow_pixel.png"
-Content-Type: image/png
+------WebKitFormBoundaryABC123<br>
+Content-Disposition: form-data; name="file"; filename="yellow_pixel.png"<br>
+Content-Type: image/png<br>
 
 ‰PNG
 \x0D\x0A
