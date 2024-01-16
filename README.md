@@ -48,38 +48,38 @@ CONFIG FILE DA PARSARE
     
        [server.routes]
             route1 {
-            path = /
-            accepted_methods = GET, POST
-            directory = /var/www/default
-            index_file = index.html
-            enable_directory_listing = true
+                path = /
+                accepted_methods = GET, POST
+                directory = /var/www/default
+                index_file = index.html
+                enable_directory_listing = true
             }
         
             route2 {
-            path = /kapouet
-            accepted_methods = GET
-            directory = /tmp/www
-            index_file = index.html
-            enable_directory_listing = false
+                path = /kapouet
+                accepted_methods = GET
+                directory = /tmp/www
+                index_file = index.html
+                enable_directory_listing = false
             }
             
             route3 {
-            path = /redirect
-            http_redirect = http://www.example1.com/new-location
+                path = /redirect
+                http_redirect = http://www.example1.com/new-location
             }
             
             route4 {
-            path = /cgi-bin/script.php
-            accepted_methods = GET, POST
-            cgi_executable = /usr/bin/php-cgi
+                path = /cgi-bin/script.php
+                accepted_methods = GET, POST
+                cgi_executable = /usr/bin/php-cgi
             }
             
             route5 {
-            path = /upload
-            accepted_methods = POST
-            upload_enabled = true
-            upload_directory = /var/www/uploads
-        }
+                path = /upload
+                accepted_methods = POST
+                upload_enabled = true
+                upload_directory = /var/www/uploads
+            }
     }
     
     server {
