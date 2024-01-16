@@ -108,7 +108,6 @@ RICHIESTE HTML
 
 Esempio di richiesta GET:
 
-http
 
 GET /resource HTTP/1.1
 Host: www.example.com
@@ -116,7 +115,6 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 F
 
 Esempio di richiesta POST con JSON:
 
-http
 
 POST /resource HTTP/1.1
 Host: www.example.com
@@ -128,7 +126,6 @@ Content-Length: 18
 
 Esempio di richiesta PUT con JSON:
 
-http
 
 PUT /resource/123 HTTP/1.1
 Host: www.example.com
@@ -140,7 +137,6 @@ Content-Length: 18
 
 Esempio di richiesta DELETE:
 
-http
 
 DELETE /resource/123 HTTP/1.1
 Host: www.example.com
@@ -148,7 +144,6 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 F
 
 Esempio di richiesta di upload di un file:
 
-http
 
 POST /upload HTTP/1.1
 Host: www.example.com
