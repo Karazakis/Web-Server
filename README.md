@@ -1,6 +1,7 @@
 # Web-Server
 
 // PER USARE GIT HUB
+
 prima bisogna aver messo su setting del proprio profilo la ssh key nel file id rsa pub.pub dell vostro pc nella cartella home/.ssh
 git remote set-url origin git@github.com:Karazakis/Web-Server.git // per fare il push senza auth
 
