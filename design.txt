@@ -18,7 +18,7 @@ generate resp
 -compose header
 send resp
 
-//procedere per fare
+/procedere per fare
 
 vedere come funziona ngix e appuntare i diversi comportamenti su config file diversi
 
