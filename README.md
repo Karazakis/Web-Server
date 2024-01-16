@@ -37,7 +37,8 @@ utils
 CONFIG FILE DA PARSARE
 
 [servers]
-server1 {
+
+server {
     host = 127.0.0.1
     port = 8080
     server_names = localhost, example1.com
@@ -45,7 +46,7 @@ server1 {
     error_pages = 404.html, 500.html
     client_body_limit = 10M
 
-    [server1.routes]
+    [server.routes]
     route1 {
         path = /
         accepted_methods = GET, POST
@@ -81,7 +82,7 @@ server1 {
     }
 }
 
-server2 {
+server {
     host = 127.0.0.1
     port = 9090
     server_names = example2.com
@@ -89,7 +90,7 @@ server2 {
     error_pages = 404_custom.html
     client_body_limit = 5M
 
-    [server2.routes]
+    [server.routes]
     route1 {
         path = /
         accepted_methods = GET
@@ -97,8 +98,6 @@ server2 {
         index_file = home.html
         enable_directory_listing = true
     }
-
-    # Aggiungi altre configurazioni delle route per il secondo server se necessario
 }
 
 
