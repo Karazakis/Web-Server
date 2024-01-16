@@ -1,0 +1,61 @@
+parsing richieste http
+
+Esempio di richiesta GET:
+
+GET /resource HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+
+
+Esempio di richiesta POST con JSON:
+
+POST /resource HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+Content-Type: application/json
+Content-Length: 18
+
+{"key":"value"}
+
+
+Esempio di richiesta DELETE:
+
+DELETE /resource/123 HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+
+
+Esempio di richiesta di upload di un file:
+
+POST /upload HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
+Content-Length: ...
+
+------WebKitFormBoundaryABC123
+Content-Disposition: form-data; name="file"; filename="example.txt"
+Content-Type: text/plain
+
+Contenuto del file qui...
+
+------WebKitFormBoundaryABC123-
+
+
+oppure
+
+POST /upload HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
+Content-Length: ...
+
+------WebKitFormBoundaryABC123
+Content-Disposition: form-data; name="file"; filename="yellow_pixel.png"
+Content-Type: image/png
+
+‰PNG
+\x0D\x0A
+\x1A\x0A
+\x00\x00\x00\x0DIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1F\x15\xC4\x89\x00\x00\x00\x0AIDAT\x08\xD7c\xF8\xFF\xFF\x3F\x00\x05\xFE\x02\x00\x00\x00\x00IEND\xAE\x42\x60\x82
+------WebKitFormBoundaryABC123--
