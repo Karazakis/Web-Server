@@ -36,69 +36,69 @@ utils
 
 CONFIG FILE DA PARSARE
 
-[servers]
-
-server {
-    host = 127.0.0.1
-    port = 8080
-    server_names = localhost, example1.com
-    default_server = true
-    error_pages = 404.html, 500.html
-    client_body_limit = 10M
-
-    [server.routes]
-    route1 {
-        path = /
-        accepted_methods = GET, POST
-        directory = /var/www/default
-        index_file = index.html
-        enable_directory_listing = true
+    [servers]
+    
+    server {
+        host = 127.0.0.1
+        port = 8080
+        server_names = localhost, example1.com
+        default_server = true
+        error_pages = 404.html, 500.html
+        client_body_limit = 10M
+    
+       [server.routes]
+            route1 {
+            path = /
+            accepted_methods = GET, POST
+            directory = /var/www/default
+            index_file = index.html
+            enable_directory_listing = true
+            }
+        
+            route2 {
+            path = /kapouet
+            accepted_methods = GET
+            directory = /tmp/www
+            index_file = index.html
+            enable_directory_listing = false
+            }
+            
+            route3 {
+            path = /redirect
+            http_redirect = http://www.example1.com/new-location
+            }
+            
+            route4 {
+            path = /cgi-bin/script.php
+            accepted_methods = GET, POST
+            cgi_executable = /usr/bin/php-cgi
+            }
+            
+            route5 {
+            path = /upload
+            accepted_methods = POST
+            upload_enabled = true
+            upload_directory = /var/www/uploads
+        }
     }
-
-    route2 {
-        path = /kapouet
-        accepted_methods = GET
-        directory = /tmp/www
-        index_file = index.html
-        enable_directory_listing = false
+    
+    server {
+        host = 127.0.0.1
+        port = 9090
+        server_names = example2.com
+        default_server = false
+        error_pages = 404_custom.html
+        client_body_limit = 5M
+    
+        [server.routes]
+        route1 {
+            path = /
+            accepted_methods = GET
+            directory = /var/www/second_server
+            index_file = home.html
+            enable_directory_listing = true
+        }
     }
-
-    route3 {
-        path = /redirect
-        http_redirect = http://www.example1.com/new-location
-    }
-
-    route4 {
-        path = /cgi-bin/script.php
-        accepted_methods = GET, POST
-        cgi_executable = /usr/bin/php-cgi
-    }
-
-    route5 {
-        path = /upload
-        accepted_methods = POST
-        upload_enabled = true
-        upload_directory = /var/www/uploads
-    }
-}
-
-server {
-    host = 127.0.0.1
-    port = 9090
-    server_names = example2.com
-    default_server = false
-    error_pages = 404_custom.html
-    client_body_limit = 5M
-
-    [server.routes]
-    route1 {
-        path = /
-        accepted_methods = GET
-        directory = /var/www/second_server
-        index_file = home.html
-        enable_directory_listing = true
-    }
-}
 
 
 ////
