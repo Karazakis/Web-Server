@@ -17,7 +17,7 @@ void ASocket::test_connection(int item_to_test)
     if (item_to_test < 0)
     {
         perror("Fail...");
-        exit(EXIT_FAILURE);
+        exit(1);
     }
 }
 

@@ -1,6 +1,6 @@
-#ifndef SERVER_HPP
-# define SERVER_HPP
+# pragma once
 # include "WebServer.hpp"
+# include "Socket/LibSocket.hpp"
 # include <iostream>
 # include <iomanip>
 # include <vector>
@@ -26,4 +26,3 @@ class Server
         std::string _response_header;
 };
 
-#endif

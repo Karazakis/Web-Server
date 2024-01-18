@@ -18,7 +18,8 @@ int main(int argc, char **argv)
     {
         try
         {
-            WebServer server("");
+            char serverAddress[] = "";
+            WebServer server(serverAddress);
             server.run();
         }
         catch(const std::exception& e)

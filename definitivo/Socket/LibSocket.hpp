@@ -1,5 +1,4 @@
-#ifndef LIBSOCKET_HPP
-# define LIBSOCKET_HPP
+#pragma once
 # include "ASocket.hpp"
 # include "BindSocket.hpp"
 # include "ListenSocket.hpp"
@@ -16,4 +15,3 @@
 # include <string>
 # include <cstdlib>
 # include <fstream>
-#endif

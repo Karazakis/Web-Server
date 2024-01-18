@@ -1,27 +1,22 @@
 NAME := webserver
-
-CFLAGS := -Wall -Wextra -Werror -g -std=c++98 
-
-CC := c++
-
-SRCS := webserver.cpp server/AServer.cpp server/WebServer.cpp socket/ASocket.cpp socket/BindSocket.cpp socket/ListenSocket.cpp
-OBJS :=  $(SRCS:.cpp=.o)
-
-.cpp.o:
-	${CC} ${FLAGS} -c $< -o ${<:.cpp=.o}
-
-RM :=	rm -f
+CFLAGS := -Wall -Wextra -Werror -std=c++98
+CC := g++
+SRCS := webserver.cpp Server.cpp socket/ASocket.cpp socket/BindSocket.cpp socket/ListenSocket.cpp
+OBJS := $(SRCS:.cpp=.o)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c -o $@ $^
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

@@ -3,17 +3,12 @@
 SocketInfo::SocketInfo(int por, std::vector< std::string > allowed_doman)
 {
     socket_class = new ListenSocket(AF_INET, SOCK_STREAM, 0, port, INADDR_ANY, 10);
-    socket = &socket_class->getSock();
+    socket = socket_class->getSock();
     port = por;
     allowed_domain = allowed_doman;
 }
 
-SocketInfo::SocketInfo(int &sock, int por, std::string doman, std::vector< std::string > allowed_doman) : port(por), socket(sock), allowed_domain(allowed_doman)
-{
-
-}
-
-WebServer::WebServer(char *filename)
+/*WebServer::WebServer(char *filename)
 {
     std::multimap<std::string, std::string> defaul_env = loadDefaultEnv();
     Config config(filename, defaul_env);
@@ -22,19 +17,48 @@ WebServer::WebServer(char *filename)
     {
         Server *tmp = new Server(_env[i]);
         for(int j = 0; j < _env[i]["server_name"].size(); j++)
-            _server.insert(std::pair<std::string, Server & >((_env[i])["server_name"], tmp));
+            _server.insert(std::pair<std::string, Server * >((_env[i])["server_name"], tmp));
         for (std::multimap<std::string, std::string>::iterator it = _env[i].begin(); it != _env[i].end(); ++it) 
             if (it->first == "port") 
-                if (/*se il socket sulla porta esiste già*/)
+                if (se il socket sulla porta esiste già)
                     _socket.push_back(SocketInfo(it->second, _env[i]));
     }
+}*/
+
+WebServer::WebServer(char* filename) {
+    std::multimap<std::string, std::string> default_env = loadDefaultEnv();
+    Config config(filename, default_env);
+    _env = config.getEnv();
+
+    for (int i = 0; i < _env.size(); i++) {
+        Server* tmp = new Server(_env[i]);
+
+        // Aggiungo il server alla mappa _server per ogni server_name
+        std::multimap<std::string, std::string>::iterator it = _env[i].begin();
+        while (it != _env[i].end()) {
+            if (it->first == "server_name") {
+                _server.insert(std::pair<std::string, Server*>(it->second, tmp));
+            }
+            ++it;
+        }
+
+        // Aggiungo il socket alla lista _socket per ogni porta
+        std::multimap<std::string, std::string>::iterator port_it = _env[i].find("port");
+        if (port_it != _env[i].end()) {
+            // Verifica se il socket sulla porta esiste già
+            if (/*se il socket sulla porta esiste già*/) {
+                _socket.push_back(SocketInfo(atoi(port_it->second.c_str()), _env[i]));
+            }
+        }
+    }
 }
+
 
 void WebServer::run()
 {
     sockaddr_in addr;
     socklen_t addrLen = sizeof(addr);
-    char clientDomain[NI_MAXHOST];
+    char clientDomain[1025];
     int domainResult;
 
     while (true) {
@@ -68,7 +92,7 @@ void WebServer::run()
                     } else {
                         domainResult = getpeername(newClientSocket, (struct sockaddr*)&addr, &addrLen);
                         if (domainResult == 0) {
-                            domainResult = getnameinfo((struct sockaddr*)&addr, addrLen, clientDomain, sizeof(clientDomain), NULL, 0, NI_NAMEREQD);
+                            domainResult = getnameinfo((struct sockaddr*)&addr, addrLen, clientDomain, sizeof(clientDomain), NULL, 0, 8);
                             if (domainResult == 0) {
                                 if (!isAllowedDomain(clientDomain, socketInfo.allowed_domain)) {
                                     std::cerr << "Connessione rifiutata da " << clientDomain << std::endl;
@@ -100,14 +124,14 @@ void WebServer::run()
                         // Verifica del dominio per il client esistente
                         int domainResult = getpeername(socketInfo.socket, (struct sockaddr*)&addr, &addrLen);
                         if (domainResult == 0) {
-                            domainResult = getnameinfo((struct sockaddr*)&addr, addrLen, clientDomain, sizeof(clientDomain), NULL, 0, NI_NAMEREQD);
+                            domainResult = getnameinfo((struct sockaddr*)&addr, addrLen, clientDomain, sizeof(clientDomain), NULL, 0, 8);
                             if (domainResult == 0) {
                                 if (!isAllowedDomain(clientDomain, socketInfo.allowed_domain)) {
                                     std::cerr << "Connessione rifiutata da " << clientDomain << std::endl;
                                     close(socketInfo.socket);
                                     it = _socket.erase(it);
                                 } else {
-                                    _server[clientDomain].run(buffer, socketInfo.socket, socketInfo.client_domain, socketInfo.port);
+                                    _server[clientDomain]->run(buffer, socketInfo.socket, socketInfo.client_domain, socketInfo.port);
                                 }
                             } else {
                                 perror("Errore nella risoluzione del dominio");

@@ -2,9 +2,9 @@
 # define WEBSERVER_HPP
 # include "ConfigParser/Config.hpp"
 # include "Server.hpp"
-# include "LibSocket.hpp"
-# include "RequestHandler.hpp"
-# include "Responder.hpp"
+# include "Socket/LibSocket.hpp"
+# include "RequestHandler/RequestHandler.hpp"
+# include "Responder/Responder.hpp"
 # include <iostream>
 # include <iomanip>
 # include <vector>
@@ -12,7 +12,9 @@
 # include <arpa/inet.h>
 # include <netinet/in.h>
 # include <cstring>
+# include <sys/socket.h>
 
+class Server;
 
 class SocketInfo {
     public:
@@ -21,7 +23,7 @@ class SocketInfo {
         SocketInfo(int &sock, int por, std::string doman, std::vector< std::string > allowed_doman);
         ~SocketInfo();
 
-        int &socket;
+        int socket;
         bool isServer;
         int port;  // Aggiunto il numero di porta
         std::string client_domain;  // Aggiunto il dominio
@@ -43,7 +45,7 @@ class WebServer
         void run();
 
     private:
-        std::map< std::string, Server & > _server;
+        std::map< std::string, Server * > _server;
         std::vector< std::multimap< std::string, std::string > > _env;
         std::vector< SocketInfo > _socket;
 };
