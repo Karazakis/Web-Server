@@ -1,5 +1,8 @@
 # Web-Server
 
+// PER STUDIARE <br>
+https://github.com/cclaude42/webserv <br>
+
 // PER USARE GIT HUB
 
 prima bisogna aver messo su setting del proprio profilo la ssh key nel file id rsa pub.pub dell vostro pc nella cartella home/.ssh
