@@ -1,0 +1,56 @@
+//STRUTTURA WEB SERVER
+parser configfile
+setup server
+-socket
+-bind
+-listen
+-fcntl
+-select
+-accept
+parse req
+-header
+-content
+exec req
+-get
+-post
+-delete
+generate resp
+-compose header
+send resp
+
+/procedere per fare
+
+vedere come funziona ngix e appuntare i diversi comportamenti su config file diversi
+
+in base ai risultati fare il parse config file e riprodurre gli stessi errori
+
+fare la parte del server che mette il server in ascolto sulle porte e alias dette dalla config 
+
+fare parsing richiesta ricevuta
+
+fare esecuzione comandi di post get e delete con argomenti da richiesta
+
+fare elaborarote header risposta sulla base di come fa ngix
+
+fare elabotore risposta (cgi e non);
+
+fare trasmettitore risposta
+
+//Roba magagnosa
+
+fa
+
+handler fatto bene
+
+la funzione run della classe  webserver è necessariamente pesa, tra select e gestione di praticamente tutto in un unico processo.
+
+status risposta per ogni evento(post, upload) o errore o redirect 
+esempio 201 305 404
+
+parsing corretto configfile, da ricordare che deve dare errore se ci sono la stessa porta nello stesso server
+
+//test e stress test
+
+curl
+web browser
+siege
