@@ -5,8 +5,7 @@
 #include<netinet/in.h>
 #include<iostream>
 #include <fcntl.h> // For fcntl, F_GETFL, F_SETFL, and O_NONBLOCK
-
-
+#include <unistd.h> // for close()
 
 class ASocket 
 {
@@ -24,7 +23,8 @@ class ASocket
         int getSock();
         void setAddr(struct sockaddr_in address);
         void setSock(int sock);
-        void setSocketNonBlocking();
+        void setSocketNonBlocking2();
+        virtual void closeSocket();
 };
 
 #endif

@@ -12,7 +12,8 @@ void Config::mergeEnv()
 
 bool Config::checkEnv()
 {
-
+ // Implement the logic to check the environment
+    return true; // or false, depending on your logic
 }
 
 void Config::takeEnvFromFile(char *filename)

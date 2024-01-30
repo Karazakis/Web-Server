@@ -3,7 +3,7 @@
 ListenSocket::ListenSocket(int domain, int service, int protocol, int port, u_long interface, int bcklg) : BindSocket(domain, service, protocol, port, interface)
 {
     backlog = bcklg;
-    setSocketNonBlocking();
+    setSocketNonBlocking2();
 
     listening = listen(getSock(), backlog);
     if (listening < 0) {

@@ -38,7 +38,17 @@ void ASocket::setSock(int soc)
     sock = soc;
 }
 
-void ASocket::setSocketNonBlocking() {
+void ASocket::closeSocket() {
+    if (sock != -1) {
+        // Close the socket
+        close(sock);
+        sock = -1;  // Reset the socket descriptor to an invalid value
+    }
+
+    // Perform additional cleanup if necessary
+}
+
+void ASocket::setSocketNonBlocking2() {
     int flags = fcntl(sock, F_GETFL, 0);
     if (flags == -1) {
         perror("setSocketNonBlocking: Error getting flags");

@@ -1,5 +1,6 @@
 #ifndef RESPONDER_HPP
 # define  RESPONDER_HPP
+# include "../RequestHandler/RequestHandler.hpp"
 # include "../WebServer.hpp"
 # include <iostream>
 # include <iomanip>
@@ -14,12 +15,12 @@ class Responder
         Responder(RequestHandler request, int &socket);
         
         Responder &operator=(Responder const &rhs);
-        static void sendResponseHeader();
-        static void sendResponseBody();
+        void sendResponseHeader();
+        void sendResponseBody();
 
     private:
-        static int &_socket;
-        static RequestHandler _request;
+        int &_socket;
+        RequestHandler _request;
 };
 
 #endif

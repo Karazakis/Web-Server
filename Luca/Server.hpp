@@ -1,5 +1,6 @@
 #ifndef SERVER_HPP
 # define SERVER_HPP
+# include "./Socket/ListenSocket.hpp" 
 # include "WebServer.hpp"
 # include <iostream>
 # include <iomanip>
@@ -18,7 +19,7 @@ class Server
 
         void run(char *buffer, int &socket, std::string domain, int port);
         std::vector< ListenSocket > socket_container;
-
+        void closeServer();
     private:
         std::multimap<std::string, std::string> _env;
         std::vector< std::multimap<std::string, std::string> > _location_setting;

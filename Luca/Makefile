@@ -4,7 +4,12 @@ CFLAGS := -Wall -Wextra -Werror -g -std=c++98
 
 CC := c++
 
-SRCS := webserver.cpp server/AServer.cpp server/WebServer.cpp socket/ASocket.cpp socket/BindSocket.cpp socket/ListenSocket.cpp
+SRCS := main.cpp \
+        Server.cpp WebServer.cpp \
+        ConfigParser/Config.cpp ConfigParser/Parser.cpp \
+        RequestHandler/RequestHandler.cpp RequestHandler/RequestParser.cpp \
+        Socket/ASocket.cpp Socket/BindSocket.cpp Socket/ListenSocket.cpp
+
 OBJS :=  $(SRCS:.cpp=.o)
 
 .cpp.o:

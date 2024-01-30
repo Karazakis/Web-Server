@@ -1,4 +1,38 @@
 #include "WebServer.hpp"
+#include "Server.hpp"
+
+// Function to load the default environment settings
+std::multimap<std::string, std::string> WebServer::loadDefaultEnv() {
+    // Implementation depends on how you want to handle default settings
+    // Here is a simple example:
+    std::multimap<std::string, std::string> defaultEnv;
+    defaultEnv.insert(std::make_pair("default_key", "default_value"));
+    // ... Add more default settings as needed ...
+    return defaultEnv;
+}
+
+// Function to check if a domain is allowed
+bool WebServer::isAllowedDomain(char *domain, std::vector<std::string> allowed_domain) {
+    // Assuming 'domain' is a domain name that needs to be checked
+    // against a list of allowed domains
+    std::string domainStr(domain);
+    for (const auto& allowed : allowed_domain) {
+        if (domainStr == allowed) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to close all servers
+void WebServer::closeAllServer() {
+    // Close all server sockets and perform necessary cleanup
+    for (auto& serverPair : _server) {
+        // Assuming Server class has a method to close its sockets
+        serverPair.second->closeServer(); // You need to implement this in the Server class
+    }
+    // Clean up any other resources associated with the WebServer
+}
 
 bool WebServer::isPortExisting(int portNumber)
 {
@@ -36,7 +70,7 @@ WebServer::WebServer(char *filename)
             if (envPair.first == "server_name")
             {
                 // Use envPair.second, which is the value corresponding to "server_name"
-                _server.insert(std::pair<std::string, Server&>(envPair.second, *tmp));
+                _server[envPair.second] = tmp;
             }
         }
         for (const auto& envPair : _env[i])
@@ -135,7 +169,7 @@ void WebServer::run()
                                 } else 
                                 {
                                     int socket = socketInfo.socket; // Copy the value to a temporary variable
-                                    _server[clientDomain].run(buffer, socket, socketInfo.client_domain, socketInfo.port);
+                                    _server[clientDomain]->run(buffer, socket, socketInfo.client_domain, socketInfo.port);
                                 }
                             } else {
                                 perror("Errore nella risoluzione del dominio");

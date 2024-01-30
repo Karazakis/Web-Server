@@ -1,10 +1,9 @@
 #ifndef WEBSERVER_HPP
 # define WEBSERVER_HPP
 # include "ConfigParser/Config.hpp"
-# include "Server.hpp"
-# include "LibSocket.hpp"
-# include "RequestHandler.hpp"
-# include "Responder.hpp"
+# include "./Socket/LibSocket.hpp"
+# include "./RequestHandler/RequestHandler.hpp"
+# include "./Responder/Responder.hpp"
 # include <iostream>
 # include <iomanip>
 # include <vector>
@@ -18,13 +17,14 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+class Server;
 
 class SocketInfo {
     public:
         SocketInfo();
         SocketInfo(int port, std::vector< std::string > allowed_doman);
         SocketInfo(int sock, int por, std::string doman, std::vector< std::string > allowed_doman);
-        ~SocketInfo();
+        ~SocketInfo(){};
 
         int socket;
         bool isServer;
@@ -39,7 +39,7 @@ class WebServer
     public:
         WebServer(char *filename);
         WebServer(WebServer const &src);
-        ~WebServer();
+        ~WebServer(){};
         
         WebServer &operator=(WebServer const &rhs);
         void closeAllServer();
@@ -49,7 +49,7 @@ class WebServer
         bool isPortExisting(int portNumber);
 
     private:
-        std::map< std::string, Server & > _server;
+        std::map< std::string, Server* > _server;
         std::vector< std::multimap< std::string, std::string > > _env;
         std::vector< SocketInfo > _socket;
 };
