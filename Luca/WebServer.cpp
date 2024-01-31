@@ -1,7 +1,9 @@
 #include "WebServer.hpp"
 #include "Server.hpp"
 
-SocketInfo::SocketInfo(){}
+SocketInfo::SocketInfo() : socket(-1), isServer(false), port(0), socket_class(NULL) {
+    // Properly initialize all members
+}
 
 SocketInfo::SocketInfo(int por, std::vector< std::string > allowed_doman)
 {
@@ -16,7 +18,9 @@ SocketInfo::SocketInfo(int sock, int por, std::string doman, std::vector< std::s
 
 }
 
-SocketInfo::~SocketInfo(){}
+SocketInfo::~SocketInfo(){
+    delete socket_class;
+}
 
 // Function to load the default environment settings
 std::multimap<std::string, std::string> WebServer::loadDefaultEnv() {
