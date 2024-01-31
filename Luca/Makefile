@@ -8,7 +8,8 @@ SRCS := main.cpp \
         Server.cpp WebServer.cpp \
         ConfigParser/Config.cpp ConfigParser/Parser.cpp \
         RequestHandler/RequestHandler.cpp RequestHandler/RequestParser.cpp \
-        Socket/ASocket.cpp Socket/BindSocket.cpp Socket/ListenSocket.cpp
+        Socket/ASocket.cpp Socket/BindSocket.cpp Socket/ListenSocket.cpp Socket/SocketUtility.cpp \
+		Responder/Responder.cpp
 
 OBJS :=  $(SRCS:.cpp=.o)
 

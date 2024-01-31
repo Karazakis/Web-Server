@@ -1,6 +1,7 @@
 #ifndef LISTENSOCKET_HPP
 # define LISTENSOCKET_HPP
 # include "BindSocket.hpp"
+# include "SocketUtility.hpp"
 
 class ListenSocket : public BindSocket
 {

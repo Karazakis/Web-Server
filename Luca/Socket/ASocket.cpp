@@ -48,17 +48,17 @@ void ASocket::closeSocket() {
     // Perform additional cleanup if necessary
 }
 
-void ASocket::setSocketNonBlocking2() {
-    int flags = fcntl(sock, F_GETFL, 0);
-    if (flags == -1) {
-        perror("setSocketNonBlocking: Error getting flags");
-        // Handle error appropriately
-    }
+// void ASocket::setSocketNonBlocking2() {
+//     int flags = fcntl(sock, F_GETFL, 0);
+//     if (flags == -1) {
+//         perror("setSocketNonBlocking: Error getting flags");
+//         // Handle error appropriately
+//     }
 
-    flags |= O_NONBLOCK;
-    if (fcntl(sock, F_SETFL, flags) == -1) {
-        perror("setSocketNonBlocking: Error setting non-blocking");
-        // Handle error appropriately
-    }
-}
+//     flags |= O_NONBLOCK;
+//     if (fcntl(sock, F_SETFL, flags) == -1) {
+//         perror("setSocketNonBlocking: Error setting non-blocking");
+//         // Handle error appropriately
+//     }
+// }
 

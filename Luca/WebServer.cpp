@@ -1,6 +1,23 @@
 #include "WebServer.hpp"
 #include "Server.hpp"
 
+SocketInfo::SocketInfo(){}
+
+SocketInfo::SocketInfo(int por, std::vector< std::string > allowed_doman)
+{
+    socket_class = new ListenSocket(AF_INET, SOCK_STREAM, 0, port, INADDR_ANY, 10);
+    socket = socket_class->getSock();
+    port = por;
+    allowed_domain = allowed_doman;
+}
+
+SocketInfo::SocketInfo(int sock, int por, std::string doman, std::vector< std::string > allowed_doman) : port(por), socket(sock), allowed_domain(allowed_doman)
+{
+
+}
+
+SocketInfo::~SocketInfo(){}
+
 // Function to load the default environment settings
 std::multimap<std::string, std::string> WebServer::loadDefaultEnv() {
     // Implementation depends on how you want to handle default settings
@@ -42,19 +59,6 @@ bool WebServer::isPortExisting(int portNumber)
         }
     }
     return false;
-}
-
-SocketInfo::SocketInfo(int por, std::vector< std::string > allowed_doman)
-{
-    socket_class = new ListenSocket(AF_INET, SOCK_STREAM, 0, port, INADDR_ANY, 10);
-    socket = socket_class->getSock();
-    port = por;
-    allowed_domain = allowed_doman;
-}
-
-SocketInfo::SocketInfo(int sock, int por, std::string doman, std::vector< std::string > allowed_doman) : port(por), socket(sock), allowed_domain(allowed_doman)
-{
-
 }
 
 WebServer::WebServer(char *filename)

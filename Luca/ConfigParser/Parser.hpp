@@ -13,7 +13,7 @@ class Parser
     public:
         Parser(char *filename);
         Parser(Parser const &src);
-        ~Parser();
+        ~Parser(){};
 
         Parser &operator=(Parser const &rhs);
         void takeFile(char *inputfile);

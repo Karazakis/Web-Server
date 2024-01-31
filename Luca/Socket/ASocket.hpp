@@ -23,7 +23,7 @@ class ASocket
         int getSock();
         void setAddr(struct sockaddr_in address);
         void setSock(int sock);
-        void setSocketNonBlocking2();
+        //void setSocketNonBlocking2();
         virtual void closeSocket();
 };
 

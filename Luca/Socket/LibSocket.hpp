@@ -3,6 +3,7 @@
 # include "ASocket.hpp"
 # include "BindSocket.hpp"
 # include "ListenSocket.hpp"
+# include "SocketUtility.hpp"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>

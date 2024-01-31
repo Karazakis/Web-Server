@@ -5,6 +5,23 @@ Config::Config(char *filename, std::multimap<std::string, std::string> defaul_en
     takeEnvFromFile(filename);
 }
 
+Config::~Config() {
+    // Clean up resources if necessary
+}
+
+Config::Config(Config const &src) {
+    // Implement copy constructor if necessary
+    // Deep copy _file, _default_env, and _env from src
+}
+
+Config &Config::operator=(Config const &rhs) {
+    if (this != &rhs) {
+        // Implement assignment operator if necessary
+        // Deep copy _file, _default_env, and _env from rhs
+    }
+    return *this;
+}
+
 void Config::mergeEnv()
 {
 

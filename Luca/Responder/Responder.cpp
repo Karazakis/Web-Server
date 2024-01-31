@@ -1,7 +1,7 @@
 #include "Responder.hpp"
 
 // Constructor
-Responder::Responder(RequestHandler request, int &socket) : _request(request), _socket(socket) {
+Responder::Responder(RequestHandler* request, int &socket) : _request(request), _socket(socket) {
     // Initialize or perform any setup required for Responder
 }
 

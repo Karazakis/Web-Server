@@ -24,7 +24,7 @@ class SocketInfo {
         SocketInfo();
         SocketInfo(int port, std::vector< std::string > allowed_doman);
         SocketInfo(int sock, int por, std::string doman, std::vector< std::string > allowed_doman);
-        ~SocketInfo(){};
+        ~SocketInfo();
 
         int socket;
         bool isServer;
@@ -38,7 +38,7 @@ class WebServer
 {
     public:
         WebServer(char *filename);
-        WebServer(WebServer const &src);
+        //WebServer(WebServer const &src);
         ~WebServer(){};
         
         WebServer &operator=(WebServer const &rhs);
@@ -53,18 +53,6 @@ class WebServer
         std::vector< std::multimap< std::string, std::string > > _env;
         std::vector< SocketInfo > _socket;
 };
-
-void setSocketNonBlocking(int sock) 
-{
-    int flags = fcntl(sock, F_GETFL, 0);
-    if (flags < 0) {
-        perror("Error getting flags on socket");
-        return;
-    }
-    if (fcntl(sock, F_SETFL, flags | O_NONBLOCK) < 0) {
-        perror("Error setting non-blocking flag on socket");
-    }
-}
 
 
 #endif
